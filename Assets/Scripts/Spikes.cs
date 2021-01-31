@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    public int hurtAmount = -8;
+    public int hurtAmount = -1;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

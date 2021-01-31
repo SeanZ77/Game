@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coins : Collectable
+public class Potion : Collectable
 {
     // Start is called before the first frame update
     void Start()
     {
-        collectableName = "Coin";
-        description = "increase score by 10";
+        collectableName = "Potion";
+        description = "increase score and decrease health";
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     override public void Use() {
-        player.GetComponent<playerManager>().ChangeScore(10);
+        player.GetComponent<playerManager>().ChangeScore(30);
+        player.GetComponent<playerManager>().ChangeHealth(-30);
         Destroy(this.gameObject);
     }
 }

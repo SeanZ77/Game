@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,6 +54,7 @@ public class playerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (info.inventory.Count == 0)
         {
             inventoryText.text = "Current Selection: None";
@@ -89,19 +90,26 @@ public class playerManager : MonoBehaviour
             PauseGame();
         }
 
-        if (info.health < 100)
+      
+        if (info.health > 100)
         {
-            info.health += 1;
+            info.health = 100;
         }
-
-        if (info.health <= 40)
+        if (info.health <= 45)
         {
             camera.SetActive(true);
+        }
+
+        else
+        {
+            camera.SetActive(false);
         }
         if (info.health <= 0)
         {
             LoseGame();
         }
+
+
 
         
     }
@@ -182,16 +190,12 @@ public class playerManager : MonoBehaviour
         info.health += value;
     }
 
+    
     public void ChangeScore(int value)
     {
         info.score += value;
     }
 
-    IEnumerator healthRegen()
-    {
-        info.health += 1;
-        yield return new WaitForSeconds(1f);
-
-    }
+    
 
 }
